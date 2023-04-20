@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPool<T> : MonoBehaviour where T : IPoolObject {
 
+    [Header("ObjectPool")]
     [SerializeField] private GameObject _poolObjectPrefab;
 
     private List<T> _pool;

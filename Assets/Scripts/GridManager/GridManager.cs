@@ -13,13 +13,9 @@ public class GridManager : SingleInstance<GridManager> {
         _mainCamera = Camera.main;
     }
 
-    private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
-            Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int cellPosition = _grid.WorldToCell(worldPosition);
-
-            Debug.Log(cellPosition);
-        }
+    public Vector3Int GetGridPosition(Vector3 mousePosition) {
+        Vector3 worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
+        return _grid.WorldToCell(worldPosition);
     }
 
 }

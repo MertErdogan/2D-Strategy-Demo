@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName ="BuildingData", menuName = "BuildingData")]
+public class BuildingData : ScriptableObject {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int id;
+    public string buildingName;
+    public string buildingDescription;
+    public int buildingPrice;
+    public Sprite buildingIcon;
+    public Vector2Int buildingDimensions;
+    public int buildingHealth;
+    public BuildingController building;
+
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Carousel<CarouselType, DataType> : MonoBehaviour where CarouselType : CarouselItem<DataType>
 {
+
+    [Header("Carousel")]
     public CarouselType CarouselPrefab;
     public Transform CarouselContainer;
 
