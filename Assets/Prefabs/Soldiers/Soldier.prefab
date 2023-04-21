@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8154799401440166550}
+  - component: {fileID: 1184131266660511636}
   - component: {fileID: 3328043000262957445}
   m_Layer: 0
   m_Name: Soldier
@@ -118,6 +119,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1184131266660511636
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8154799401440166551}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.5}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &3328043000262957445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad5cb1312e860e4b8a723f6b348dc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nameText: {fileID: 8154799402053499008}
 --- !u!1 &8154799402053499014
 GameObject:
   m_ObjectHideFlags: 0

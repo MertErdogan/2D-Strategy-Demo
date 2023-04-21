@@ -23,8 +23,8 @@ public class PlayerRaycastController : SingleInstance<PlayerRaycastController> {
 
             if (hit.collider.TryGetComponent(out BuildingController buildingController)) {
                 buildingController.BuildingSelected();
-            } else {
-                // TODO: add trygetcomponent for soldier
+            } else if (hit.collider.TryGetComponent(out SoldierController soldierController)) {
+                soldierController.SelectSoldier();
             }
         }
     }

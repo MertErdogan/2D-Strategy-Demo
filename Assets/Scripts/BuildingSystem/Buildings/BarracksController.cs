@@ -15,7 +15,7 @@ public class BarracksController : BuildingController {
         base.BuildingSelected();
 
         BuildingMenuController.Instance.SetBuildingMenuData(BuildingData, true);
-        SoldierManager.Instance.CreateSoldierCarouselItems(_soldiers);
+        SoldierManager.Instance.CreateSoldierCarouselItems(_soldiers, _soldierSpawnPoint);
     }
 
     public override void OnBuildingPlaced() {

@@ -30,7 +30,7 @@ public class SoldierCarouselItem : CarouselItem<SoldierData> {
     }
 
     private void HandleSelectionButtonClick() {
-        Debug.Log("selected soldier: " + Data.soldierName);
+        SoldierManager.Instance.SpawnSoldier(Data);
     }
 
 }

@@ -88,6 +88,7 @@ public class BuildingManager : SingleInstance<BuildingManager> {
 
         SelectedBuildingData = null;
         _placingBuilding = null;
+        _lastGridPosition = Vector3Int.zero;
     }
 
     private bool CheckAvailability() {
