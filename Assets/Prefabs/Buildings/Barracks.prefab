@@ -93,6 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5691634190929861465}
+  - component: {fileID: 8611169033293353014}
   - component: {fileID: -7014798058931727243}
   m_Layer: 0
   m_Name: Barracks
@@ -118,6 +119,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8611169033293353014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691634190929861464}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2, y: 2}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
 --- !u!114 &-7014798058931727243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +160,10 @@ MonoBehaviour:
   _modelContainer: {fileID: 5691634191347057495}
   _model: {fileID: 5691634190906344938}
   _buildingText: {fileID: 5691634191390220623}
+  _soldiers:
+  - {fileID: 11400000, guid: 6bf98e1e8a167874abd5f2dff9149b69, type: 2}
+  - {fileID: 11400000, guid: bd1d9177e2fe37448bb881b81bf87951, type: 2}
+  - {fileID: 11400000, guid: f349998ace7db524eafff09b12de1bd2, type: 2}
 --- !u!1 &5691634191347057494
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,14 @@ public class BuildingController : MonoBehaviour, IPoolObject {
         _model.color = new Color(color.r, color.g, color.b, alpha);
     }
 
+    public virtual void BuildingSelected() {
+        GameStateManager.Instance.SetGameState(GameState.BuildingMenu);
+    }
+
+    public virtual void OnBuildingPlaced() {
+
+    }
+
     #region PoolObject
 
     public void Activate() {

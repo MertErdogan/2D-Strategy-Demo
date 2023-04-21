@@ -15,6 +15,7 @@ public class BuildingManager : SingleInstance<BuildingManager> {
 
             _placingBuilding = Instantiate(SelectedBuildingData.building);
             _placingBuilding.SetUpBuilding(SelectedBuildingData);
+            _placingBuilding.SetColor(CheckAvailability() ? Color.green : Color.red, 0.5f);
         }
     }
 
@@ -23,12 +24,12 @@ public class BuildingManager : SingleInstance<BuildingManager> {
 
     private bool _allowBuildingPlacement = false;
     private BuildingController _placingBuilding;
-    private Dictionary<BuildingData, List<Vector3Int>> _buildings;
+    private PlacedBuildingDatabase _buildingDatabase;
     private Vector3Int _lastGridPosition;
     private List<Vector3Int> _occupiedGrids;
 
     private void Awake() {
-        _buildings = new Dictionary<BuildingData, List<Vector3Int>>();
+        _buildingDatabase = new PlacedBuildingDatabase();
 
         GameStateManager.Instance.OnGameStateChanged += HandleGameStateChanged;
     }
@@ -79,9 +80,11 @@ public class BuildingManager : SingleInstance<BuildingManager> {
     private void PlaceBuilding() {
         _placingBuilding.SetColor(Color.white, 1f);
 
-        _buildings.Add(SelectedBuildingData, _occupiedGrids);
+        _buildingDatabase.AddPlacedBuilding(new PlacedBuildingData(SelectedBuildingData, _placingBuilding, _occupiedGrids));
 
-        Debug.Log("placed building count: " + _buildings.Count);
+        Debug.Log("placed building count: " + _buildingDatabase.placedBuildings.Count);
+
+        _placingBuilding.OnBuildingPlaced();
 
         SelectedBuildingData = null;
         _placingBuilding = null;
@@ -97,9 +100,9 @@ public class BuildingManager : SingleInstance<BuildingManager> {
 
         Debug.Log("occupied grid count: " + _occupiedGrids.Count);
 
-        foreach(List<Vector3Int> buildingPosition in _buildings.Values) {
+        foreach(PlacedBuildingData placedBuilding in _buildingDatabase.placedBuildings) {
             for (int i = _occupiedGrids.Count - 1; i >= 0; i--) {
-                if (buildingPosition.Contains(_occupiedGrids[i])) {
+                if (placedBuilding.occupiedGrids.Contains(_occupiedGrids[i])) {
                     return false;
                 }
             }
