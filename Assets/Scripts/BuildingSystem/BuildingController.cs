@@ -25,8 +25,10 @@ public class BuildingController : MonoBehaviour, IPoolObject {
         private set {
             _buildingHealth = value;
 
+            _healthBar.UpdateHealthBar((float)_buildingHealth / BuildingData.buildingHealth);
+
             if (_buildingHealth <= 0) {
-                // TODO: destroy building
+                Destroy(gameObject);
             }
         }
     }
@@ -35,6 +37,7 @@ public class BuildingController : MonoBehaviour, IPoolObject {
     [SerializeField] private Transform _modelContainer;
     [SerializeField] private SpriteRenderer _model;
     [SerializeField] private TextMeshPro _buildingText;
+    [SerializeField] private HealthBarController _healthBar;
 
     public virtual void SetUpBuilding(BuildingData buildingData) { 
         BuildingData = buildingData;
@@ -54,6 +57,25 @@ public class BuildingController : MonoBehaviour, IPoolObject {
 
     public virtual void OnBuildingPlaced() {
 
+    }
+
+    public Vector3Int GetClosestPoint(Vector3 position) {
+        Vector3Int gridPosition = GridManager.Instance.GetGridPositionWithWorldPosition(position);
+
+        float x, y;
+        if (transform.position.y > gridPosition.y) {
+            y = transform.position.y + 1;
+        } else {
+            y = transform.position.y + BuildingData.buildingDimensions.y;
+        }
+
+        if (transform.position.x < gridPosition.x) {
+            x = transform.position.x + BuildingData.buildingDimensions.x;
+        } else {
+            x = transform.position.x + 1;
+        }
+
+        return GridManager.Instance.GetGridPositionWithWorldPosition(new Vector3(x, y, 0f));
     }
 
     #region PoolObject

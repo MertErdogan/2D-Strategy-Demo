@@ -28,7 +28,11 @@ public class SoldierInteractionManager : SingleInstance<SoldierInteractionManage
 
         if (Input.GetMouseButtonDown(1) && !RaycastHelper.IsPointerOverUIObject()) {
             RaycastHit2D hit = Physics2D.Raycast(_mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider == null) return;
+            if (hit.collider == null) {
+                SelectedSoldier.MoveToTarget(GridManager.Instance.GetGridPosition(Input.mousePosition));
+
+                return;
+            }
 
             if (hit.collider.TryGetComponent(out BuildingController buildingController)) {
                 SelectedSoldier.Attack(buildingController);

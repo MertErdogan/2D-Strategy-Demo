@@ -82,7 +82,9 @@ public class BuildingManager : SingleInstance<BuildingManager> {
 
         _buildingDatabase.AddPlacedBuilding(new PlacedBuildingData(SelectedBuildingData, _placingBuilding, _occupiedGrids));
 
-        Debug.Log("placed building count: " + _buildingDatabase.placedBuildings.Count);
+        for (int i = _occupiedGrids.Count - 1; i >= 0; i--) {
+            PathFindController.Instance.GetWorldTileByCellPosition(_occupiedGrids[i]).Walkable = false;
+        }
 
         _placingBuilding.OnBuildingPlaced();
 
@@ -98,8 +100,6 @@ public class BuildingManager : SingleInstance<BuildingManager> {
                 _occupiedGrids.Add(new Vector3Int(_lastGridPosition.x + i, _lastGridPosition.y + j, 0));
             }
         }
-
-        Debug.Log("occupied grid count: " + _occupiedGrids.Count);
 
         foreach(PlacedBuildingData placedBuilding in _buildingDatabase.placedBuildings) {
             for (int i = _occupiedGrids.Count - 1; i >= 0; i--) {
